@@ -1,10 +1,8 @@
-//
-$primary: blue;
-$primary-font-size: 300px;
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
 
-.sass {
-    color: $primary;
-    font-size: $primary-font-size;
-}
+// Variables
+@import 'variables';
 
-
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';

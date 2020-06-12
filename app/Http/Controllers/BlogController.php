@@ -2,41 +2,72 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Gate;
 use App\Article;
-use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
 
-    public function blog($id){
+    public function blog($id)
+    {
         $articles = \DB::table('articles')->where('id', $id)->first();
         return view('blog', [
             'articles' => $articles,
         ]);
     }
 
-    public function create() {
-        return view('create');
+    public function create()
+    {
+
+        if (Gate::allows('create-blog')) {
+            return view('create');
+        } else {
+            abort('403');
+        }
     }
 
-    public function store() {
+    public function store()
+    {
+        if (Gate::allows('store-blog')) {
+            Article::create($this->validateArticle());
+            return redirect('/blog');
+        } else {
+            abort('403');
+        }
 
-        Article::create($this->validateArticle());
 
-        return redirect('/blog');
+
+
+
+
+
     }
 
-    public function edit($id) {
-        $article = Article::find($id);
-        return view('edit', compact ('article'));
+    public function edit($id)
+    {
+        if (Gate::allows('edit-blog')) {
+            $article = Article::find($id);
+            return view('edit', compact('article'));
+        } else {
+            abort('403');
+        }
+
     }
 
-    public function update($id) {
-        $article = Article::find($id);
+    public function update($id)
+    {
 
-        $article->update($this->validateArticle());
+        if (Gate::allows('create-blog')) {
+            $article = Article::find($id);
 
-        return redirect($article->path());
+            $article->update($this->validateArticle());
+
+            return redirect($article->path());
+        } else {
+            abort('403');
+        }
+
+
 
     }
 

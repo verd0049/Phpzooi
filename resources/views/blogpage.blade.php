@@ -15,7 +15,9 @@
         </div>
 
     @endforeach
+    @can('create-blog')
     <li class="excerpt">
     <a  href="/blog/create">Add</a>
     </li>
+    @endcan
 @endsection

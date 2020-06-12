@@ -16,9 +16,11 @@
         <p>{{$articles->body}}</p>
     </li>
 </ul>
+    @auth()
     <li class="excerpt">
         <a  href="/blog/{{$articles->id}}/edit">Update</a>
     </li>
+        @endauth
 </div>
 
 
