@@ -16,11 +16,12 @@
         <p>{{$articles->body}}</p>
     </li>
 </ul>
-    @auth()
+    @can('update-blog')
     <li class="excerpt">
         <a  href="/blog/{{$articles->id}}/edit">Update</a>
     </li>
-        @endauth
+        @endcan
+
 </div>
 
 
