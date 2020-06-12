@@ -46,9 +46,9 @@ class BlogController extends Controller
     public function validateArticle()
     {
         return request()->validate([
-            'title' => 'required',
-            'excerpt' => 'required',
-            'body' => 'required'
+            'title' => ['required', 'string'],
+            'excerpt' => ['required', 'string'],
+            'body' => ['required', 'string']
         ]);
     }
 
