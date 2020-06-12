@@ -4,7 +4,7 @@
 
 <h1>Welkom op de Hoofdpagina van Evan Verdoorn</h1>
 
-<img src="099.gif" alt="welkomgif" class="gif">
+
 
 <h2>Waarom het HBO-niveau bij mij past</h2>
 
